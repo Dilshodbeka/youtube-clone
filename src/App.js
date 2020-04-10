@@ -9,20 +9,21 @@ class App extends React.Component {
     videos: [],
     selectedVideo: null,
   };
+  
   componentDidMount() {
     this.handleSubmit("pdf create react");
   }
-
+  
   onVideoSelect = (video) => {
     this.setState({ selectedVideo: video });
   };
-
+  
   handleSubmit = async (SearchTerm) => {
     const response = await youtube.get("search", {
       params: {
         part: "snippet",
         maxResult: 5,
-        key: process.env.API_KEY,
+        key: `${process.env.REACT_APP_API_KEY}`,
         q: SearchTerm,
       },
     });
